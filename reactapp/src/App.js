@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Start from './components/UI/Banner/Start.js';
+import "./App.css"
+import Result from './components/UI/Banner/Result.js';
+import Button from './components/UI/Button/Button.js';
+import Quiz from './components/UI/Banner/Quiz.js';
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+      <h1 className="heading1">Quizz App</h1>
+      <button onClick={<Start/>}>Start Quiz</button>
+      </div>
+      <Button TestingInput ="Show Results"></Button>
+      <Quiz/>
+      
+    </>
+    
   );
 }
 
