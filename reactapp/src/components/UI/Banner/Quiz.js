@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import React ,{ useState } from 'react'
 import Card from '../Card/Card'
-import { useState } from 'react';
+ 
 import Result from './Result';
 
 export default function Quiz() {
