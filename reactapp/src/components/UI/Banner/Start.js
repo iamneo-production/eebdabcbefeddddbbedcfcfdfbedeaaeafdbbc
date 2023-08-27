@@ -1,6 +1,4 @@
 import React,{useState} from 'react'
-
- 
 import Quiz from './Quiz';
 
 export default function Start() {
