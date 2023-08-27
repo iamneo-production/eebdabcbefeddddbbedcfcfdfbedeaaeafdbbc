@@ -1,13 +1,11 @@
 import React ,{ useState } from 'react'
 import Card from '../Card/Card'
- 
+
 import Result from './Result';
 
 export default function Quiz() {
-    const options1=["Mahatma Gandhi","Jawaharlal Nehru","Donald Trump","Barack Obama"];
-    const options2=["Blue", "Red", "Yellow","Green"];
     const [active, setActive] = useState(true);
-    const [complete, setComplete] = useState(0);
+    
     const handleActive = () => {
         setActive(false);
     }
@@ -17,18 +15,6 @@ export default function Quiz() {
 
     const handleCount1 = (card1) =>{
         setCount(count+card1);
-    }
-    const handleCount2 = (card2) =>{
-        setCount(count+card2);
-    }
-    const handleCount3 = (card3) =>{
-        setCount(count+card3);
-    }
-    const handleCount4 = (card4) =>{
-        setCount(count+card4);
-    }
-    const handleCount5 = (card5) =>{
-        setCount(count+card5);
     }
 
     const [click, setClick] = useState(0);
