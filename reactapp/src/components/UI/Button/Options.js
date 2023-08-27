@@ -1,5 +1,5 @@
-import React from 'react'
-import { useState } from 'react';
+import React,{ useState } from 'react'
+
 
 export default function Options(props) {
     const [clicked, setClicked]=useState(false);
@@ -12,7 +12,7 @@ export default function Options(props) {
             props.handleClick()
         }
         }>
-            {/* {props.text[0]} */}
+             
         </button>
 
         <button className='butt'  disabled={clicked?true:false} onClick={()=>{
@@ -21,7 +21,7 @@ export default function Options(props) {
             setClicked(true)
             props.handleClick()
         }}>
-            {/* {props.text[1]} */}
+            
         </button >
 
         <button className='butt'  disabled={clicked?true:false}  onClick={()=>{
@@ -30,7 +30,7 @@ export default function Options(props) {
             setClicked(true)
             props.handleClick()
             }}>
-            {/* {props.text[2]} */}
+             
         </button>
 
         <button className='butt'  disabled={clicked?true:false} onClick={()=>{
@@ -39,7 +39,7 @@ export default function Options(props) {
             setClicked(true)
             props.handleClick()
             }}>
-            {/* {props.text[3]} */}
+             
         </button>
 
         </> 

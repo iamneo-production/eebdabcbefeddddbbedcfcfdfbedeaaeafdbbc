@@ -1,6 +1,4 @@
-import React from 'react'
-import Button from '../Button/Options'
-import { useState } from 'react';
+import React,{ useState } from 'react'
 import Start from './Start';
 
 export default function Result(props) {
