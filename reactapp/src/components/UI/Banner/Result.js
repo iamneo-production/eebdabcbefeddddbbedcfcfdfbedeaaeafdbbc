@@ -1,20 +1,18 @@
 import React from 'react';
 import Button from '../Button/Button';
 
-const Result = ({ answers, questions, restartQuiz }) => {
-  const correctAnswers = answers.reduce((count, answer, index) => {
-    return answer === questions[index].correctIndex ? count + 1 : count;
-  }, 0);
-
+const Result = ({ score, totalQuestions, onRestart }) => {
   return (
-    <div className="result">
-      <h1>Quizz App</h1>
-      <p>You have answered {correctAnswers} / {questions.length} Correctly</p>
+    <div className="result-container">
+     
+     <br/>
+      <p>You have answered {score} / {totalQuestions} Correctly</p>
       <br/>
       <br/>
-      <Button label="Start Quiz" onClick={restartQuiz} />
+      <Button label="Start Quiz" onClick={onRestart} />
     </div>
   );
 };
 
 export default Result;
+

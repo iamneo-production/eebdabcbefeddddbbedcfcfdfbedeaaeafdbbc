@@ -20,3 +20,4 @@ const Card = ({ question, options, selectedOption, handleOptionSelect }) => {
 };
 
 export default Card;
+ 

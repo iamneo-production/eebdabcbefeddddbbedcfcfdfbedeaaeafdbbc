@@ -3,12 +3,10 @@ import Button from '../Button/Button';
 
 const Start = ({ onStart }) => {
   return (
-    <div className="start">
-      <h1>Quizz App</h1>
+    <div className='startbtn'>
       <br/>
       <br/>
-      <div className='startbtn'><Button label="Start Quiz" onClick={onStart} /></div>
-      
+      <Button label="Start Quiz" onClick={onStart} />
     </div>
   );
 };

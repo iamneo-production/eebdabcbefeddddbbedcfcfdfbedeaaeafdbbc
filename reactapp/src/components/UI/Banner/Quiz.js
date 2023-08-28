@@ -1,12 +1,41 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
-import Result from './Result';
 import Button from '../Button/Button';
+import Result from './Result';
 
-const Quiz = ({ questions }) => {
-  const [currentQuestion, setCurrentQuestion] = useState(-1);
+const questions = [
+  {
+    question: 'Who is the father of the nation?',
+    options: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'Donald Trump', 'Barrack Obama'],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: 'What color is are the leaves?',
+    options: ['Blue', 'Red', 'Yellow','Green'],
+    correctAnswerIndex: 3,
+  },
+  {
+    question: 'What color is are the sky?',
+    options: ['Blue', 'Red', 'Yellow','Green'],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: 'What color is are the sky?',
+    options: ['Blue', 'Red', 'Yellow','Green'],
+    correctAnswerIndex: 0,
+  },
+  {
+    question: 'What color is are the fire?',
+    options: ['Blue', 'Red', 'Yellow','Green'],
+    correctAnswerIndex: 2,
+  }
+  // Add more questions here
+];
+
+const Quiz = () => {
   const [selectedOptions, setSelectedOptions] = useState(Array(questions.length).fill(null));
-  const [showResults, setShowResults] = useState(false);
+  const [showScore, setShowScore] = useState(false);
+
 
   const handleOptionSelect = (questionIndex, optionIndex) => {
     const newSelectedOptions = [...selectedOptions];
@@ -14,55 +43,56 @@ const Quiz = ({ questions }) => {
     setSelectedOptions(newSelectedOptions);
   };
 
+  const calculateScore = () => {
+    let score = 0;
+    questions.forEach((question, index) => {
+      if (selectedOptions[index] === question.correctAnswerIndex) {
+        score++;
+      }
+    });
+    return score;
+  };
+
   const allQuestionsAnswered = selectedOptions.every((option) => option !== null);
-
-  const startQuiz = () => {
-    setCurrentQuestion(0);
-  };
-
+  
   const handleShowResults = () => {
-    setShowResults(true);
+    setShowScore(true);
   };
 
-  const restartQuiz = () => {
-    setCurrentQuestion(-1);
+  const handleStartQuizAgain = () => {
+    setShowScore(false);
     setSelectedOptions(Array(questions.length).fill(null));
-    setShowResults(false);
   };
 
-  if (showResults) {
-    return <Result answers={selectedOptions} questions={questions} restartQuiz={restartQuiz} />;
-  }
-
-  if (currentQuestion === -1) {
-    return (
-      <div className="quiz-container">
-        <h1>Quizz App</h1>
-        <br/>
-        <br/>
-        <Button label="Start Quiz" onClick={startQuiz} />
-      </div>
-    );
-  }
 
   return (
     <div className="quiz-container">
-      {questions.map((question, index) => (
-        <Card
-          key={index}
-          question={question.question}
-          options={question.options}
-          selectedOption={selectedOptions[index]}
-          handleOptionSelect={(optionIndex) => handleOptionSelect(index, optionIndex)}
+      {!showScore ? (
+        <>
+          {questions.map((question, index) => (
+            <Card
+              key={index}
+              question={question.question}
+              options={question.options}
+              selectedOption={selectedOptions[index]}
+              handleOptionSelect={(optionIndex) => handleOptionSelect(index, optionIndex)}
+            />
+          ))}
+          {allQuestionsAnswered && (
+            <div className='resultbtn'><Button label="Show Results" onClick={handleShowResults} /></div>
+            
+          )}
+        </>
+      ) : (
+        <Result
+          score={calculateScore()}
+          totalQuestions={questions.length}
+          onRestart={handleStartQuizAgain}
         />
-      ))}
-      {allQuestionsAnswered && (
-        <div className='resbtn'>
-          <Button label="Show Results" onClick={handleShowResults} />
-        </div>
       )}
     </div>
   );
 };
+
 
 export default Quiz;
