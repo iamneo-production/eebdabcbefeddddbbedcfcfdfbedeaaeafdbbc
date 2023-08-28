@@ -1,7 +1,23 @@
 import React from 'react';
 import Button from '../Button/Button';
 
-const Card = ({ question, options, selectedOption, handleOptionSelect }) => {
+const Card = ({
+  question,
+  options,
+  selectedOption,
+  handleOptionSelect,
+  correctAnswerMarkUpdate, // Add this prop
+  attempt, // Add this prop
+  answer, // Add this prop
+}) => {
+  const handleOptionClick = (optionIndex) => {
+    handleOptionSelect(optionIndex);
+    attempt(options[optionIndex] === answer);
+    if (options[optionIndex] === answer) {
+      correctAnswerMarkUpdate();
+    }
+  };
+
   return (
     <div className="card">
       <h4>{question}</h4>
@@ -10,7 +26,7 @@ const Card = ({ question, options, selectedOption, handleOptionSelect }) => {
           <Button
             key={index}
             label={option}
-            onClick={() => handleOptionSelect(index)}
+            onClick={() => handleOptionClick(index)}
             disabled={selectedOption !== null}
           />
         ))}
@@ -20,4 +36,3 @@ const Card = ({ question, options, selectedOption, handleOptionSelect }) => {
 };
 
 export default Card;
- 
