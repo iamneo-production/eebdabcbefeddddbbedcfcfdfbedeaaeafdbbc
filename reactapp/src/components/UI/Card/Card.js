@@ -1,11 +1,20 @@
 import React from 'react';
-import Options from '../Button/Options';
+import Button from '../Button/Button';
 
-const Card = ({ question, options,selectedOption, handleOptionSelect  }) => {
+const Card = ({ question, options, selectedOption, handleOptionSelect }) => {
   return (
     <div className="card">
-      <h2>{question}</h2>
-      <Options options={options} selectedOption={selectedOption} handleOptionSelect ={handleOptionSelect } />
+      <h4>{question}</h4>
+      <div className="options">
+        {options.map((option, index) => (
+          <Button
+            key={index}
+            label={option}
+            onClick={() => handleOptionSelect(index)}
+            disabled={selectedOption !== null}
+          />
+        ))}
+      </div>
     </div>
   );
 };
