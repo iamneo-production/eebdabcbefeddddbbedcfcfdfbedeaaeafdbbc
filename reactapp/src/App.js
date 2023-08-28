@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Quiz from './component/UI/Banner/Quiz';
+import Quiz from './components/UI/Banner/Quiz';
 
 const questions = [
 
