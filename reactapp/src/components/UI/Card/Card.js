@@ -6,16 +6,13 @@ const Card = ({
   options,
   selectedOption,
   handleOptionSelect,
-  correctAnswerMarkUpdate, // Add this prop
-  attempt, // Add this prop
+    // Add this prop
+   // Add this prop
   answer, // Add this prop
 }) => {
   const handleOptionClick = (optionIndex) => {
     handleOptionSelect(optionIndex);
-    attempt(options[optionIndex] === answer);
-    if (options[optionIndex] === answer) {
-      correctAnswerMarkUpdate();
-    }
+    const isCorrect = optionIndex === answer;
   };
 
   return (

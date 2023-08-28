@@ -35,22 +35,30 @@ const questions = [
 const Quiz = () => {
   const [selectedOptions, setSelectedOptions] = useState(Array(questions.length).fill(null));
   const [showScore, setShowScore] = useState(false);
+  const [attempts, setAttempts] = useState(Array(questions.length).fill(false));
+  const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
 
 
   const handleOptionSelect = (questionIndex, optionIndex) => {
     const newSelectedOptions = [...selectedOptions];
     newSelectedOptions[questionIndex] = optionIndex;
     setSelectedOptions(newSelectedOptions);
+
+    const isCorrect = optionIndex === questions[questionIndex].correctAnswerIndex;
+
+   
+    const newAttempts = [...attempts];
+    newAttempts[questionIndex] = true;
+    setAttempts(newAttempts);
+
+    if (isCorrect) {
+      setCorrectAnswerCount(correctAnswerCount + 1);
+    }
+
   };
 
   const calculateScore = () => {
-    let score = 0;
-    questions.forEach((question, index) => {
-      if (selectedOptions[index] === question.correctAnswerIndex) {
-        score++;
-      }
-    });
-    return score;
+    return correctAnswerCount;
   };
 
   const allQuestionsAnswered = selectedOptions.every((option) => option !== null);
@@ -62,6 +70,8 @@ const Quiz = () => {
   const handleStartQuizAgain = () => {
     setShowScore(false);
     setSelectedOptions(Array(questions.length).fill(null));
+    setAttempts(Array(questions.length).fill(false));
+    setCorrectAnswerCount(0);
   };
 
 
@@ -76,11 +86,13 @@ const Quiz = () => {
               options={question.options}
               selectedOption={selectedOptions[index]}
               handleOptionSelect={(optionIndex) => handleOptionSelect(index, optionIndex)}
+               
+             
+              answer={question.correctAnswerIndex}
             />
           ))}
           {allQuestionsAnswered && (
             <div className='resultbtn'><Button label="Show Results" onClick={handleShowResults} /></div>
-            
           )}
         </>
       ) : (
@@ -92,7 +104,7 @@ const Quiz = () => {
       )}
     </div>
   );
-};
+ };
 
 
 export default Quiz;
