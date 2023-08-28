@@ -1,41 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Quiz from './components/UI/Banner/Quiz';
-
-const questions = [
-
-  {
-    question: 'Who is the father of nation?',
-    options: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'Donald Trump','Barrack Obama'],
-    correctIndex: 0,
-  },
-  {
-    question: 'What color is are the leaves?',
-    options: ['Blue', 'Red', 'Yellow','Green'],
-    correctIndex: 3,
-  },
-  {
-    question: 'What color is are the sky?',
-    options: ['Blue', 'Red', 'Yellow','Green'],
-    correctIndex: 0,
-  },
-  {
-    question: 'What color is are the sky?',
-    options: ['Blue', 'Red', 'Yellow','Green'],
-    correctIndex: 0,
-  },
-  {
-    question: 'What color is are the fire?',
-    options: ['Blue', 'Red', 'Yellow','Green'],
-    correctIndex: 2,
-  }
-  // Add more questions...
-];
+import Start from './components/UI/Banner/Start';
 
 function App() {
+  const [quizStarted, setQuizStarted] = useState(false);
+
   return (
     <div className="App">
-      <Quiz questions={questions} />
+      <h1>Quizz App</h1>
+      {quizStarted ? (
+        <Quiz />
+      ) : (
+        <Start onStart={() => setQuizStarted(true)} />
+      )}
     </div>
   );
 }
