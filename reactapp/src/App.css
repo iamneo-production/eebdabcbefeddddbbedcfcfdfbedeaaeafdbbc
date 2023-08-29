@@ -1,94 +1,38 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-}
-
 .App {
   text-align: center;
-  padding: 20px;
-  
 }
 
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
 
-.start {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
-.start Button{
-background-color: #ec4040;
-padding: 8px 120px;
-}
-.quiz-container {
-  
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  flex-wrap: wrap;
-}
-.quiz-container button {
-  font-weight: bold;
-  background-color: #eaa58f;
-  padding: 15px 100px;
-}
-
-.card {
-   
-  padding: 20px;
-  background-color: #ad5499;
+  font-size: calc(10px + 2vmin);
   color: white;
-  border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
 }
 
-.options {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
- 
-
-.options button {
-  padding: 10px 20px;
-  background-color: #eaa58f;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.App-link {
+  color: #61dafb;
 }
 
-.options button:hover {
-  background-color: #e0e0e0;
-}
-
-.options button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.result {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-.result p {
-  background-color: #ec4040;
-  padding: 8px 8px;
-}
-.result button{
-  font-weight: bold;
-  background-color: #eaa58f;
-  padding: 10px 100px;
-}
-.resbtn button{
-  background-color: #2a755ee0;
-  color:white;
-  padding: 15px 30px;
-}
-.resbtn button:hover{
-  background-color: black;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
