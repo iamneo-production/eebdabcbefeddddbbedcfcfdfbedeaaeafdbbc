@@ -1,0 +1,10 @@
+.custom-button{
+    background-color:bisque;
+    padding:5px;
+    margin-left:5px;
+    margin-right:5px;
+    border-radius:2px;
+}
+.custom-button:hover{
+    background-color:darksalmon;
+}
